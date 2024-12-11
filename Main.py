@@ -41,6 +41,7 @@ class InventoryApp(Product):
 
 
 
+
         button_frame = tk.Frame(root, bg="#f0f0f0")
         button_frame.pack(fill=tk.X, padx=10, pady=10)
         tk.Button(button_frame, text="ADD Item", command=self.Add_Item, bg="#32CD32", fg="white",font=("Arial", 12)).pack(side=tk.LEFT, padx=5)
@@ -48,24 +49,22 @@ class InventoryApp(Product):
         tk.Button(button_frame, text="Delete Product", command=self.delete_product, bg="#DC143C", fg="white",font=("Arial", 12)).pack(side=tk.LEFT, padx=5)
         tk.Button(button_frame, text="Save Inventory", command=self.save_inventory, bg="#808080", fg="white",font=("Arial", 12)).pack(side=tk.LEFT, padx=5)
         tk.Button(button_frame, text="Show Inventory", command=self.restore_inventory, bg="#FF8C00", fg="white",font=("Arial", 12)).pack(side=tk.LEFT, padx=5)
-        self.restore_inventory()
-
 
     def restore_inventory(self):
-        if not os.path.exists('Inventory.csv') or os.stat('Inventory.csv').st_size == 0:
-            messagebox.showinfo("Info", "No inventory data found.")
-            return
-        with open('Inventory.csv', 'r') as csvfile:
-            self.tree.delete(*self.tree.get_children())
-            self.inventory.clear()
-            csvreader = csv.DictReader(csvfile)
-            for row in csvreader:
-                name = row['Name']
-                price = float(row['Price'])  # Convert price to float
-                quantity = int(row['Quantity'])  # Convert quantity to int
-                self.inventory.append(Product(name, price, quantity))
-                self.tree.insert("", tk.END, values=(name, f"${price:.2f}", quantity))
-
+            if not os.path.exists('Inventory.csv') or os.stat('Inventory.csv').st_size == 0:
+                messagebox.showinfo("Info", "No inventory data found.")
+                return
+            with open('Inventory.csv', 'r') as csvfile:
+                self.tree.delete(*self.tree.get_children())
+                self.inventory.clear()
+                csvreader = csv.DictReader(csvfile)
+                for row in csvreader:
+                    name = row['Name']
+                    price = float(row['Price'])  # Convert price to float
+                    quantity = int(row['Quantity'])  # Convert quantity to int
+                    self.inventory.append(Product(name, price, quantity))
+                    self.tree.insert("", tk.END, values=(name, f"${price:.2f}", quantity))
+                print("Restore inventory button clicked")
 
     def Save_Inventory_in_Csv(self,item):
         file_exists = os.path.exists('Inventory.csv')

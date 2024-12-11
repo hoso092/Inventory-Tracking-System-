@@ -1,5 +1,4 @@
 Name,Price,Quantity
-Laptop,1200.0,25
 Smartphone,800.0,50
 Wireless Mouse,25.0,100
 Keyboard,45.0,75
@@ -9,3 +8,14 @@ USB Flash Drive,15.0,200
 Desk Chair,150.0,30
 External Hard Drive,100.0,20
 Webcam,50.0,40
+Tablet,350.0,15
+Bluetooth Speaker,30.0,80
+Printer,150.0,25
+Mouse Pad,10.0,120
+Docking Station,120.0,35
+Laptop Stand,45.0,60
+HDMI Cable,20.0,150
+Power Bank,40.0,80
+Laptop Sleeve,25.0,100
+Smartphone Case,15.0,150
+Laptop,1200.0,30
