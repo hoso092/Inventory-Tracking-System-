@@ -58,6 +58,7 @@ class InventoryApp(Product):
                 self.tree.delete(*self.tree.get_children())
                 self.inventory.clear()
                 csvreader = csv.DictReader(csvfile)
+                self.tree.pack(fill=tk.BOTH,expand=True,padx=20,pady=20)
                 for row in csvreader:
                     name = row['Name']
                     price = float(row['Price'])  # Convert price to float
